@@ -4,11 +4,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		CalendarUtil cu = new CalendarUtil();
+			
+		try {
+			System.out.println(cu.weekDay(3));
+			System.out.println(cu.weekDay2(3));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
-		System.out.println(cu.weekDay(3));
-		System.out.println(cu.weekDay2(3));
-		System.out.println(cu.weekDay3(3));
-
 	}
 
 }
