@@ -18,10 +18,12 @@ public class BankAccount {
 	}
 	
 	public void withdraw(long amount) {
+		System.out.println("Withdrawing " + amount + " from " + this.iban);
 		this.balance -= amount;
 	}
 	
 	public void deposit(long amount) {
+		System.out.println("Depositing " + amount + " in " + this.iban);
 		this.balance += amount;
 	}
 
