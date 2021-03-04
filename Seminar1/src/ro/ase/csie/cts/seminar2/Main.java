@@ -29,10 +29,28 @@ public class Main {
 		Person persoana = new Person("Someone");
 		BankAccount account = new BankAccount("INGB123456789", persoana);
 		account.deposit(100);
-		account.withdraw(50);
-		account.withdraw(70);
+		try {
+			account.withdraw(50);
+			account.withdraw(70);
+		} catch (InsufficientFundsException e) {
+			System.out.println(e.getMessage());
+		}
 		
 		System.out.println("Balance: " + account.getBalance());
+		
+		System.out.println("***Fee bank account***");
+		FeeBankAccount feeAccount = new FeeBankAccount("INGB1234567", persoana);
+		//sau:
+		//account = new FeeBankAccount("INGB1234567", persoana);
+		
+		feeAccount.deposit(500);
+		try {
+			feeAccount.withdraw(100);
+		} catch (InsufficientFundsException e) {
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println("Balance: " + feeAccount.getBalance());
 		
 	}
 
