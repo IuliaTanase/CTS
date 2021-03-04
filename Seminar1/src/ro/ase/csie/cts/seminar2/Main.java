@@ -8,6 +8,7 @@ public class Main {
 		try {
 			System.out.println(cu.weekDay(3));
 			System.out.println(cu.weekDay2(3));
+			System.out.println(cu.weekDay4(3));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

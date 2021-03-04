@@ -1,5 +1,8 @@
 package ro.ase.csie.cts.seminar2;
 
+import java.text.DateFormatSymbols;
+import java.util.Locale;
+
 public class CalendarUtil {
 	public String weekDay(int day) throws IncorrectDayException {
 		if(day == 1)
@@ -50,5 +53,15 @@ public class CalendarUtil {
 		String days[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 		return days[day - 1];
 		
+	}
+	
+	public String weekDay4(int day) throws IncorrectDayException {
+		if(day < 1 || day > 7) {
+			throw new IncorrectDayException("Only 7 days in a week");			
+		}
+		
+		//String[] days = new DateFormatSymbols().getWeekdays();
+		String[] daysItalian = DateFormatSymbols.getInstance(Locale.ITALIAN).getWeekdays();
+		return daysItalian[day - 1];
 	}
 }
