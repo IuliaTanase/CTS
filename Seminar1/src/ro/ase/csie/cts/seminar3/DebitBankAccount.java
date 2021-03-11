@@ -1,51 +1,46 @@
 package ro.ase.csie.cts.seminar3;
 
-public class DebitBankAccount implements Payable, Receivable {
+public class DebitBankAccount extends BankAccount implements Payable, Receivable, Transferable {
 
-	private String iban;
-	private long balance;
-	private Person accountHolder;
-	
-	public DebitBankAccount(String iban, Person person) {
+
+	public DebitBankAccount(NotificationService notif, String iban, Person person) {
+		super(notif);
 		this.iban = iban;
-		this.balance = 0;
 		this.accountHolder = person;
+		balance = 0;
 	}
-	
+
 	@Override
 	public void withdraw(long amount) throws InsufficientFundsException {
-		System.out.println("Withdrawing " + amount + " from " + this.iban);
-		if(this.balance < amount) {
-			throw new InsufficientFundsException("Insufficient funds!" + this.balance);
-		}
-		this.balance -= amount;
+		if (amount > balance)
+			throw new InsufficientFundsException("Insuficient funds " + balance);
+		System.out.println("withdrawing " + amount + " from " + iban);
+		balance -= amount;
+	}
+
+	@Override
+	public void deposit(long amount) {
+		notificationService.sendNotification(accountHolder, "withdrawing " + amount + " from " + iban);
+		balance += amount;
 	}
 	
 	@Override
-	public void deposit(long amount) {
-		System.out.println("Depositing " + amount + " in " + this.iban);
-		this.balance += amount;
+	public void transfer(Receivable destination, long amount) throws InsufficientFundsException {
+		this.withdraw(amount);
+		destination.deposit(amount);
+		
 	}
 
 	public String getIban() {
 		return iban;
 	}
 
-	public void setIban(String iban) {
-		this.iban = iban;
-	}
-
 	public long getBalance() {
 		return balance;
 	}
 
-	public void setBalance(long balance) {
-		this.balance = balance;
-	}
-
 	public Person getAccountHolder() {
-		return this.accountHolder;
+		return accountHolder;
 	}
 
-	
 }

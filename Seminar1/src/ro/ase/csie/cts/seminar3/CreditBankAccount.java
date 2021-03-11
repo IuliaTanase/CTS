@@ -7,7 +7,6 @@ public class CreditBankAccount extends BankAccount implements Receivable {
 		this.iban = iban;
 		this.accountHolder = accountHolder;
 		this.balance = balance;
-		this.notificationService = notif;
 	}
 
 	@Override
