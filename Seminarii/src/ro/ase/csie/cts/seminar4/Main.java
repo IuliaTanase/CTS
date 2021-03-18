@@ -36,9 +36,17 @@ public class Main {
 		
 		
 		//singleton
-		Elvis elvis = Elvis.theTrueElvis; //instantiem un elvis
+//		Elvis elvis = Elvis.theTrueElvis; //instantiem un elvis
+		Elvis elvis = Elvis.getInstance();
 		System.out.println("\n\n");
 		elvis.sing();
+		
+		Elvis elvis2 = Elvis.getInstance();
+		elvis2.sing();
+		System.out.println(elvis == elvis2); //true
+		
+		ElvisV2 elvisV2 = ElvisV2.INSTANCE;
+		elvisV2.sing();
 	}
 
 }
