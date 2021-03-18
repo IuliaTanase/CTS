@@ -19,11 +19,13 @@ public class Bank {
 		return INSTANCE;
 	}
 	
+// fara comision	
 //	public DebitBankAccount openDebitAccount(Person holder) {
 //		DebitBankAccount account = new DebitBankAccount(notificationService, generateIban(), holder);
 //		return account;
 //	}
 	
+	//comision in functie de varsta
 	public DebitBankAccount openDebitAccount(Person holder) {
 		DebitBankAccount account;
 		
