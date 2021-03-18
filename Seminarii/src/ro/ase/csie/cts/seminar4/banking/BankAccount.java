@@ -37,7 +37,6 @@ public abstract class BankAccount {
 	
 	@Override
 	public String toString() {
-		return "BankAccount [iban=" + iban + ", balance=" + balance + ", accountHolder=" + accountHolder.getName()
-				+ ", notificationService=" + notificationService + "]";
+		return "BankAccount [iban=" + iban + ", balance=" + balance + ", accountHolder=" + accountHolder.getName()+"]";
 	}
 }

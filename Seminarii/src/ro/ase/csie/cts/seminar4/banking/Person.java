@@ -7,6 +7,7 @@ public class Person {
 	private String email;
 	private String mobile;
 	private Date birthDate;
+	private Integer age;
 	private long salary;
 	private NotificationType notificationType;
 	
@@ -47,6 +48,14 @@ public class Person {
 	
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+	
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 	
 	public String getMobile() {

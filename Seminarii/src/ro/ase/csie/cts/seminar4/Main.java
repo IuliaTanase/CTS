@@ -1,6 +1,7 @@
 package ro.ase.csie.cts.seminar4;
 
 import ro.ase.csie.cts.seminar4.banking.EmailNotificationService;
+import ro.ase.csie.cts.seminar4.banking.InsufficientFundsException;
 import ro.ase.csie.cts.seminar4.banking.NotificationService;
 import ro.ase.csie.cts.seminar4.banking.Person;
 import ro.ase.csie.cts.seminar4.singleton.Elvis;
@@ -9,8 +10,10 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Random;
 
+import ro.ase.csie.cts.seminar4.banking.Bank;
 import ro.ase.csie.cts.seminar4.banking.BankAccount;
 import ro.ase.csie.cts.seminar4.banking.CreditBankAccount;
+import ro.ase.csie.cts.seminar4.banking.DebitBankAccount;
 
 public class Main {
 
@@ -20,6 +23,7 @@ public class Main {
 		Person p3 = new Person("Van Damme");
 		p3.setEmail("vandamme@vandamme.com");
 		p3.setMobile("+2345677");
+		p3.setAge(19);
 		
 		//CreditBankAccount b = new CreditBankAccount(emailService, "BT123123123", p3, 100);
 		
@@ -47,6 +51,28 @@ public class Main {
 		
 		ElvisV2 elvisV2 = ElvisV2.INSTANCE;
 		elvisV2.sing();
+		
+		
+		//factory - facem o metoda care sa ne creeze obiectele
+		Person p4 = new Person("Van Damme Jr");
+		p4.setAge(14);
+		
+		Bank bank = Bank.getInstance();
+		DebitBankAccount debit1 = bank.openDebitAccount(p3);
+		debit1.deposit(20);
+		
+		DebitBankAccount debit2 = bank.openDebitAccount(p4);
+		debit2.deposit(5);
+		
+		try {
+			debit1.withdraw(15);
+			debit2.withdraw(3);
+		} catch (InsufficientFundsException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println(debit1);
+		System.out.println(debit2);
 	}
 
 }

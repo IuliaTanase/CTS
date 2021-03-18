@@ -20,7 +20,7 @@ public class DebitBankAccount extends BankAccount implements Payable, Receivable
 
 	@Override
 	public void deposit(long amount) {
-		notificationService.sendNotification(accountHolder, "withdrawing " + amount + " from " + iban);
+		notificationService.sendNotification(accountHolder, "depositing " + amount + " from " + iban);
 		balance += amount;
 	}
 	
