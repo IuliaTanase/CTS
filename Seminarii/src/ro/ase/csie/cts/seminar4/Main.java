@@ -24,6 +24,13 @@ public class Main {
 		p3.setEmail("vandamme@vandamme.com");
 		p3.setMobile("+2345677");
 		p3.setAge(19);
+		p3.setNotificationType(Person.NotificationType.EMAIL);
+		
+		Person p4 = new Person("Van Damme Jr");
+		p4.setAge(14);
+		p4.setEmail("vanjr@damme.com");
+		p4.setMobile("+44534634423");
+		p4.setNotificationType(Person.NotificationType.SMS);
 		
 		//CreditBankAccount b = new CreditBankAccount(emailService, "BT123123123", p3, 100);
 		
@@ -53,10 +60,7 @@ public class Main {
 		elvisV2.sing();
 		
 		
-		//factory - facem o metoda care sa ne creeze obiectele
-		Person p4 = new Person("Van Damme Jr");
-		p4.setAge(14);
-		
+		//factory - facem o metoda care sa ne creeze obiectele		
 		Bank bank = Bank.getInstance();
 		DebitBankAccount debit1 = bank.openDebitAccount(p3);
 		debit1.deposit(20);

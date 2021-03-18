@@ -1,15 +1,19 @@
 package ro.ase.csie.cts.seminar4.banking;
 
+import ro.ase.csie.cts.seminar4.banking.Person.NotificationType;
+
 //clasa singleton
 //ii dam posibilitatea sa ne creeze noi conturi bancare
 
 public class Bank {
 	private static Bank INSTANCE;
 	
-	private NotificationService notificationService;
+	private NotificationService emailNotificationService;
+	private NotificationService smsNotificationService;
 	
 	private Bank() {
-		notificationService = new EmailNotificationService();
+		emailNotificationService = new EmailNotificationService();
+		smsNotificationService = new SMSNotificationService();
 	}
 	
 	public static synchronized Bank getInstance() {
@@ -29,12 +33,24 @@ public class Bank {
 	public DebitBankAccount openDebitAccount(Person holder) {
 		DebitBankAccount account;
 		
+//		if(holder.getAge() < 18) {
+//			 account = new DebitBankAccount(holder.getNotificationType() == Person.NotificationType.EMAIL ? emailNotificationService : smsNotificationService, 
+//					 						generateIban(), 
+//					 						holder);
+//		} else {
+//			 account = new FeeBankAccount(holder.getNotificationType() == Person.NotificationType.EMAIL.EMAIL ? emailNotificationService : smsNotificationService, 
+//										  generateIban(), 
+//										  holder);
+//		}
 		if(holder.getAge() < 18) {
-			 account = new DebitBankAccount(notificationService, generateIban(), holder);
+			 account = new DebitBankAccount(holder.getNotificationType().getNotificationService(), 
+					 						generateIban(), 
+					 						holder);
 		} else {
-			 account = new FeeBankAccount(notificationService, generateIban(), holder);
+			 account = new FeeBankAccount(holder.getNotificationType().getNotificationService(), 
+										  generateIban(), 
+										  holder);
 		}
-
 		return account;
 	}
 	
