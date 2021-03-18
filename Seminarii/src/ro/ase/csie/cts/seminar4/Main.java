@@ -3,6 +3,7 @@ package ro.ase.csie.cts.seminar4;
 import ro.ase.csie.cts.seminar4.banking.EmailNotificationService;
 import ro.ase.csie.cts.seminar4.banking.NotificationService;
 import ro.ase.csie.cts.seminar4.banking.Person;
+import ro.ase.csie.cts.seminar4.singleton.Elvis;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -33,6 +34,11 @@ public class Main {
 		
 		Boolean value = Boolean.valueOf(false);	//tot o metoda static factory care ne da un obiect inapoi, dar nu creeaza o clasa noua => refoloseste instantele pe care le are deja implementate
 		
+		
+		//singleton
+		Elvis elvis = Elvis.theTrueElvis; //instantiem un elvis
+		System.out.println("\n\n");
+		elvis.sing();
 	}
 
 }
