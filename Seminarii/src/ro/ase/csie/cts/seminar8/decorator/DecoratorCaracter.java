@@ -27,5 +27,9 @@ public abstract class DecoratorCaracter extends ACMECaracterJoc {
 	
 	}
 	
+	@Override
+	public int getPuncteViata() {
+		return this.caracter.getPuncteViata();		
+	}
 	
 }
