@@ -7,7 +7,7 @@ public class TestProxy {
 		InterfataModulLogin login = new ModulLogin("10.0.0.1", 127);
 		
 		login = new ProxyLogin(login);
-		//InterfataModulLogin proxy = new ProxyLogin((login);
+		//InterfataModulLogin proxy = new ProxyLogin(login);
 		
 		if(login.login("admin", "admin12")) {
 			System.out.println("Hello admin");
