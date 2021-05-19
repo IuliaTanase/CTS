@@ -1,6 +1,6 @@
 package ro.ase.csie.cts.seminar10.command;
 
-//un alt executant
+//un alt executant - - echivalent bucatar
 public class ModulUpdateClient implements InterfataModulJoc {
 
 	@Override

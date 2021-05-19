@@ -2,7 +2,7 @@ package ro.ase.csie.cts.seminar8.adapter;
 
 public class AdaptorDisneyLaACME extends ACMECaracterJoc {
 
-	//referinta catre clasaExistenta
+	//referinta catre clasaExistenta = cine trebuie adaptat
 	ActiuniDisney caracterDisney = null;
 
 	public AdaptorDisneyLaACME(ActiuniDisney caracterDisney) {

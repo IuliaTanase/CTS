@@ -1,6 +1,6 @@
 package ro.ase.csie.cts.seminar10.command;
 
-//un executant
+//un executant - echivalent bucatar
 public class ModulAutoSave implements InterfataModulJoc {
 
 	@Override

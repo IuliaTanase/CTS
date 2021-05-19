@@ -1,11 +1,9 @@
 package ro.ase.csie.cts.seminar10.command;
 
-import java.nio.channels.UnsupportedAddressTypeException;
-
-//ce facem in plan secundar = comanda concreta
+//ce facem in plan secundar = comanda concreta - echivalent comandaPizza/comandaSupa
 public class TaskToDo extends TaskAsincron {
 
-	//referinta catre modulul care face acel lucru
+	//referinta catre modulul care face acel lucru - echiv bucatar
 	InterfataModulJoc modulJoc = null;
 	
 	String info;

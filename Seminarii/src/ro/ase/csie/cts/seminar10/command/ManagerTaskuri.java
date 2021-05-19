@@ -2,6 +2,7 @@ package ro.ase.csie.cts.seminar10.command;
 
 import java.util.ArrayList;
 
+//echivalent chelner
 public class ManagerTaskuri {
 
 	ArrayList<TaskAsincron> taskuri = new ArrayList<>();
@@ -16,5 +17,6 @@ public class ManagerTaskuri {
 			task.executaTask();
 			taskuri.remove(0);
 		}
+		
 	}
 }

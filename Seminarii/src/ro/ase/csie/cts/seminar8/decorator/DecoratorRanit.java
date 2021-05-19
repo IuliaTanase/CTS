@@ -10,10 +10,10 @@ public class DecoratorRanit extends DecoratorCaracter {
 
 	@Override
 	public void seDeplaseaza() {
-		if(this.caracter.getPuncteViata() < 100) {
+		if(super.getPuncteViata() < 100) {
 			System.out.println("Nu se mai poate deplasa. Este ranit critic.");
 		} else {
-			this.caracter.seDeplaseaza();
+			super.seDeplaseaza();
 		}
 	}
 
