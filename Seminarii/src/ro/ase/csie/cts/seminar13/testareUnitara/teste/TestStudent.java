@@ -11,11 +11,14 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import ro.ase.csie.cts.seminar13.testareUnitara.exceptii.ExceptieNote;
 import ro.ase.csie.cts.seminar13.testareUnitara.exceptii.ExceptieNume;
 import ro.ase.csie.cts.seminar13.testareUnitara.exceptii.ExceptieVarsta;
 import ro.ase.csie.cts.seminar13.testareUnitara.modele.Student;
 
 public class TestStudent {
+	
+	//test fixture = partea de date de care ma folosesc pt teste
 	
 	static Student student;
 	static ArrayList<Integer> note;
@@ -93,6 +96,51 @@ public class TestStudent {
 	public void testSetVarstaErrorConditionsValoriMari() throws ExceptieVarsta { 
 		int varstaNoua = Student.MAX_VARSTA + 100;
 		student.setVarsta(varstaNoua);	
+	}
+	
+	
+	@Test
+	public void testGetNotaMinimaOrderingSortatCrescator() throws ExceptieNote {	//verificam daca ordinea influenteaza rezultatul
+		int notaMinima = 4;
+		ArrayList<Integer> noteSortate = new ArrayList<>();
+		for(int i = 0; i < 5; i++) {
+			noteSortate.add(notaMinima + i);
+		}
+		student.setNote(noteSortate);
+		
+		int notaMinimaDeterminata = student.getNotaMinima();
+		assertEquals("Test cu note sortate crescator", notaMinima, notaMinimaDeterminata);
+		
+	}
+	
+	@Test
+	public void testGetNotaMinimaCardinalityZero() throws ExceptieNote { //cand am 0 elemente
+		ArrayList<Integer> note = new ArrayList<>();
+		student.setNote(note);
+		
+		int notaMinimaAsteptata = 0;
+		int notaMinimaCalculata = student.getNotaMinima();
+		assertEquals("Test fara note", notaMinimaAsteptata, notaMinimaCalculata);
+	}
+	
+	@Test
+	public void testGetNotaMinimaCardinalityUnu() throws ExceptieNote { //cand am 1 element
+		ArrayList<Integer> note = new ArrayList<>();
+		note.add(Student.MAX_NOTA);
+		student.setNote(note);
+		
+		int notaMinimaAsteptata = Student.MAX_NOTA;
+		int notaMinimaCalculata = student.getNotaMinima();
+		assertEquals("Test cu o singura nota", notaMinimaAsteptata, notaMinimaCalculata);
+	}
+	
+	@Test
+	public void testGetNotaMinimaExistenceReferintaNull() throws ExceptieNote { //test de existence - cand notele sunt null => daca exista => right
+		student.setNote(null);
+		
+		int notaMinimaAsteptata = 0;
+		int notaMinimaCalculata = student.getNotaMinima();
+		assertEquals("Test cu referinta null pt note", notaMinimaAsteptata, notaMinimaCalculata);
 	}
 
 }
